@@ -5,17 +5,17 @@
 ```
 $ sudo apt update
 $ sudo apt install php-xml composer -y
-$ mkdir
-$ cd a326
-$ echo "# A326" >> README.md
-$ composer create-project laravel/laravel a326_base
+$ mkdir Duo30
+$ cd Duo30
+$ echo "# Duo30" >> README.md
+$ composer create-project laravel/laravel Duo30_base
 $ git init
 $ git add .
 $ git commit -m "first commit"
 $ git branch -M main
 $ git remote add origin git@github.com:M-Andoh/Duo30.git
 $ git push -u origin main
-$ cd a326_base
+$ cd Duo30_base
 ```
 
 ## sail インストール & 初期設定
@@ -91,8 +91,11 @@ http://localhost に接続
 ### breeze 初期設定
 
 ```
-$ sail artisan breeze:install react --typescript --dark --eslint
 $ sail composer require laravel/breeze --dev
+$ sail npm uninstall @types/node
+$ rm -fr node_modules/ package-lock.json
+$sail npm install -D   @types/babel__core   @types/babel__generator   @types/babel__template   @types/babel__traverse   @types/estree   @types/lodash
+$ sail npm install -D @types/node@latest
 $ sail artisan breeze:install react --typescript --dark --eslint
 $ sail npm install react react-dom @types/react @types/react-dom
 $ sail npm install @mui/material @mui/icons-material @emotion/react @emotion/styled
