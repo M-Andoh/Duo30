@@ -11,7 +11,7 @@ class AudioEngine {
         this.stop();
 
         return new Promise((resolve) => {
-            this.audio = new Audio(item.src);
+            this.audio = new Audio(item.url);
             this.stopped = false;
 
             this.audio.onended = () => {

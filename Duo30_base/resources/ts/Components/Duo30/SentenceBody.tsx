@@ -1,3 +1,5 @@
+import { audioEngine } from '@/audio/AudioEngine';
+import { getAudioItem } from '@/audio/buildQueue';
 import { usePlayerStore } from '@/store/playerStore';
 import { Container, Stack } from '@mui/material';
 import { EnglishAudioCard } from './EnglishAudioCard';
@@ -5,6 +7,7 @@ import { JapaneseAudioCard } from './JapaneseAudioCard';
 import { PlayerTransport } from './PlayerTransport';
 import { PlaySentenceButton } from './PlaySentenceButton';
 
+getAudioItem;
 export const SentenceBody = () => {
     const { sentenceNo, sentences, globalSetting: settings } = usePlayerStore();
 
@@ -19,16 +22,18 @@ export const SentenceBody = () => {
 
             <JapaneseAudioCard
                 text={sentence?.japanese ?? ''}
-                onPlay={() => play(route('duo30.japanese', { id: sentenceNo }))}
+                onPlay={() =>
+                    audioEngine.playOne(getAudioItem(sentenceNo, 'japanese'))
+                }
             />
 
             <EnglishAudioCard
                 text={sentence?.english ?? ''}
                 onPlayNormal={() =>
-                    play(route('duo30.english', { id: sentenceNo }))
+                    audioEngine.playOne(getAudioItem(sentenceNo, 'english'))
                 }
                 onPlayFast={() =>
-                    play(route('duo30.english', { id: sentenceNo }))
+                    audioEngine.playOne(getAudioItem(sentenceNo, 'englishfast'))
                 }
             />
 

@@ -1,4 +1,4 @@
-// src/types/GlobalPlaySetting.ts
+
 export type GlobalPlaySetting = {
     /* ========= 自動実行 ========= */
     autoPlay: boolean;
@@ -22,4 +22,5 @@ export type GlobalPlaySetting = {
     // 拡張系
     lockWhilePlaying: boolean;
     enableABRepeat: boolean;
+    
 };

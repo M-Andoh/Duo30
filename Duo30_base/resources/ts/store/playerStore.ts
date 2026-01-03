@@ -1,8 +1,10 @@
 // src/store/playerStore.ts
 import useDuo30Index from '@/hocks/Duo30/useDuo30Index';
-import { GlobalPlaySetting } from '@/types/GlobalPlaySetting';
+import { GlobalPlaySetting} from '@/types/GlobalPlaySetting';
 import { SentenceType } from 'SentenceType';
 import { create } from 'zustand';
+
+export type PlayerStatus = 'idle' | 'playing' | 'paused';
 
 /* =========================
    PlayStore（← これ）
@@ -21,6 +23,9 @@ export type PlayStore = {
     sentenceNo: number;
     sectionNo: number;
 
+    status: PlayerStatus;
+    currentUrl?: string;
+
     /** actions */
     setGlobalSetting: (setting: Partial<GlobalPlaySetting>) => void;
 
@@ -36,6 +41,9 @@ export type PlayStore = {
     setSentenceNo: (n: number) => void;
     prevSentence: () => void;
     nextSentence: () => void;
+
+    setStatus: (s: PlayerStatus) => void;
+    setCurrentUrl: (url?: string) => void;
 };
 
 const getSections = () => {
@@ -81,6 +89,9 @@ export const usePlayerStore = create<PlayStore>((set, get) => ({
     sentenceNo: 1,
     sectionNo: 1,
 
+    status: 'idle',
+    currentUrl: undefined,
+
     /* actions */
     setGlobalSetting: (setting) =>
         set((state) => ({
@@ -92,13 +103,13 @@ export const usePlayerStore = create<PlayStore>((set, get) => ({
 
     setPlaying: (playing) => set({ isPlaying: playing }),
 
-    setSections: (n: number[]) => {
+    setSections: (n) => {
         set((s) => ({
             sections: n,
         }));
     },
 
-    setSentences: (n: SentenceType[]) => {
+    setSentences: (n) => {
         set((s) => ({
             sentences: n,
         }));
@@ -181,5 +192,17 @@ export const usePlayerStore = create<PlayStore>((set, get) => ({
                 sectionNo: sentence.section_id,
             }));
         }
+    },
+
+
+    setStatus: (status) => {
+        set((s)=>({
+            status: status,
+        }));
+    },
+    setCurrentUrl: (url) => {
+        set((s)=>({
+            currentUrl: url,
+        }));
     },
 }));
