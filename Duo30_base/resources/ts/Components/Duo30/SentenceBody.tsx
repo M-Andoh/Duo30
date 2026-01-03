@@ -23,17 +23,17 @@ export const SentenceBody = () => {
             <JapaneseAudioCard
                 text={sentence?.japanese ?? ''}
                 onPlay={() =>
-                    audioEngine.playOne(getAudioItem(sentenceNo, 'japanese'))
+                    audioEngine.playOne(getAudioItem(sentenceNo, 'Japanese'))
                 }
             />
 
             <EnglishAudioCard
                 text={sentence?.english ?? ''}
                 onPlayNormal={() =>
-                    audioEngine.playOne(getAudioItem(sentenceNo, 'english'))
+                    audioEngine.playOne(getAudioItem(sentenceNo, 'English'))
                 }
                 onPlayFast={() =>
-                    audioEngine.playOne(getAudioItem(sentenceNo, 'englishfast'))
+                    audioEngine.playOne(getAudioItem(sentenceNo, 'EnglishFast'))
                 }
             />
 

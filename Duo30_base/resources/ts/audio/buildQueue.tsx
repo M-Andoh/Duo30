@@ -3,35 +3,35 @@ import { GlobalPlaySetting } from '@/types/GlobalPlaySetting';
 
 export const getAudioItem = (id: number, type: AudioItemType) => {
     switch (type) {
-        case 'title':
+        case 'Title':
             return {
                 id: id,
                 type: type,
                 url: route('duo30.title', { id: id }),
             };
 
-        case 'words':
+        case 'Words':
             return {
                 id: id,
                 type: type,
                 url: route('duo30.word', { id: id }),
             };
 
-        case 'japanese':
+        case 'Japanese':
             return {
                 id: id,
                 type: type,
                 url: route('duo30.japanese', { id: id }),
             };
 
-        case 'english':
+        case 'English':
             return {
                 id: id,
                 type: type,
                 url: route('duo30.english', { id: id }),
             };
 
-        case 'englishfast':
+        case 'EnglishFast':
             return {
                 id: id,
                 type: type,
@@ -47,23 +47,23 @@ export const buildQueue = (
     const queue: AudioItem[] = [];
 
     if (setting.playTitle) {
-        queue.push(getAudioItem(id, 'title'));
+        queue.push(getAudioItem(id, 'Title'));
     }
 
     if (setting.playKeywords) {
-        queue.push(getAudioItem(id, 'words'));
+        queue.push(getAudioItem(id, 'Words'));
     }
 
     if (setting.playJapanese) {
-        queue.push(getAudioItem(id, 'japanese'));
+        queue.push(getAudioItem(id, 'Japanese'));
     }
 
     if (setting.playEnglishNormal) {
-        queue.push(getAudioItem(id, 'english'));
+        queue.push(getAudioItem(id, 'English'));
     }
 
     if (setting.playEnglishFast) {
-        queue.push(getAudioItem(id, 'englishfast'));
+        queue.push(getAudioItem(id, 'EnglishFast'));
     }
 
     return queue;

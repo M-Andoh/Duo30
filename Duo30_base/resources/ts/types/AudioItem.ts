@@ -1,9 +1,9 @@
 export type AudioItemType =
-    | 'title'
-    | 'words'
-    | 'japanese'
-    | 'english'
-    | 'english.fast';
+    | 'Title'
+    | 'Words'
+    | 'Japanese'
+    | 'English'
+    | 'EnglishFast';
 
 export type AudioItem = {
     id: number;
